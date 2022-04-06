@@ -31,7 +31,7 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], "upload.png"))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], "shit.png"))
             shitify("upload.png")
             return redirect(url_for('download_file', name="shitted.jpg"))
     return '''
