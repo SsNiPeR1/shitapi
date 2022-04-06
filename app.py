@@ -1,7 +1,5 @@
-import config, os
+import os
 from flask import Flask, request, url_for, redirect, flash, send_from_directory
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileField
 from werkzeug.utils import secure_filename
 from shitify import shitify
 
@@ -25,13 +23,10 @@ def download_file(name):
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
